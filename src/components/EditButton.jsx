@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 export default function EditButton({ onClick }) {
   return (
     <>
@@ -11,3 +13,7 @@ export default function EditButton({ onClick }) {
     </>
   );
 }
+
+EditButton.propTypes = {
+  onClick: PropTypes.func,
+};
