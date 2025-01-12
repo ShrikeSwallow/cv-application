@@ -6,25 +6,31 @@ const ContactDetails = () => {
     <>
       <form
         action=""
-        className="grid grid-cols-[min-content_1fr] gap-x-2 gap-y-4"
+        className="grid grid-cols-[min-content_0.5fr] items-center gap-x-2 gap-y-4"
       >
-        <label htmlFor="telephone">Telephone</label>
+        <label className="text-sm font-normal" htmlFor="telephone">
+          Telephone
+        </label>
         <input
-          className="border-2 border-solid border-slate-200"
+          className="border-2 border-solid border-slate-200 text-sm"
           type="text"
           id="telephone"
           name="telephone"
         />
-        <label htmlFor="email">Email</label>
+        <label className="text-sm" htmlFor="email">
+          Email
+        </label>
         <input
-          className="border-2 border-solid border-slate-200"
+          className="border-2 border-solid border-slate-200 text-sm"
           type="text"
           id="email"
           name="email"
         />
-        <label htmlFor="address">Address</label>
+        <label className="text-sm" htmlFor="address">
+          Address
+        </label>
         <input
-          className="border-2 border-solid border-slate-200"
+          className="border-2 border-solid border-slate-200 text-sm"
           type="textarea"
           id="address"
           name="address"

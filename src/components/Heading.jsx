@@ -21,11 +21,11 @@ export default function Heading() {
 
   return (
     <header>
-      <h1 className="text-5xl">Curriculum Vitae</h1>
-      <div className="cv-author mb-4 mt-2 flex gap-5 align-baseline">
+      <h1 className="text-4xl font-semibold">Curriculum Vitae</h1>
+      <div className="cv-author mb-4 mt-2 flex gap-5 align-baseline font-medium">
         {mode === "display" && (
           <Fragment>
-            <h2 className="text-3xl">{person}</h2>
+            <h2 className="text-2xl">{person}</h2>
             <EditButton onClick={showInput}></EditButton>
           </Fragment>
         )}
@@ -34,7 +34,7 @@ export default function Heading() {
             <input
               onChange={handleChange}
               value={person}
-              className="border-2 border-solid border-slate-200 text-3xl"
+              className="border-2 border-solid border-slate-200 text-2xl"
             />
             <SaveButton onClick={saveInput}></SaveButton>
           </Fragment>
