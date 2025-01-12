@@ -36,6 +36,14 @@ const ContactDetails = () => {
           id="address"
           name="address"
         />
+        <div className="col-span-full flex justify-center gap-8">
+          <button className="bg-slate-400" type="submit">
+            Save
+          </button>
+          <button className="bg-slate-200" type="reset">
+            Cancel
+          </button>
+        </div>
       </form>
     </>
   );

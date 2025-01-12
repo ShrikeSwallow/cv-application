@@ -4,7 +4,7 @@ import SaveButton from "./SaveButton";
 import ContactDetails from "./ContactDetails";
 
 export default function Heading() {
-  const [person, setPerson] = useState("Maciej Jaskolka");
+  const [person, setPerson] = useState("Your Name");
   const [mode, setMode] = useState("display");
 
   const showInput = () => {
