@@ -4,9 +4,10 @@ import SaveButton from "./SaveButton";
 const ContactDetails = () => {
   return (
     <>
+      <h3 className="pb-2 text-base font-medium">Contact details:</h3>
       <form
         action=""
-        className="grid grid-cols-[min-content_0.5fr] items-center gap-x-2 gap-y-4"
+        className="grid grid-cols-[min-content_0.5fr] items-center gap-2"
       >
         <label className="text-sm font-normal" htmlFor="telephone">
           Telephone
