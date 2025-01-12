@@ -1,7 +1,10 @@
-import EditButton from "./EditButton";
-import SaveButton from "./SaveButton";
+import { useState } from "react";
 
 const ContactDetails = () => {
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+  const [address, setAddress] = useState("");
+
   return (
     <>
       <h3 className="pb-2 text-base font-medium">Contact details:</h3>
