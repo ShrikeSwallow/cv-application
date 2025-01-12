@@ -1,6 +1,7 @@
 import { Fragment, useState } from "react";
 import EditButton from "./EditButton";
 import SaveButton from "./SaveButton";
+import ContactDetails from "./ContactDetails";
 
 export default function Heading() {
   const [person, setPerson] = useState("Maciej Jaskolka");
@@ -21,7 +22,7 @@ export default function Heading() {
   return (
     <header>
       <h1 className="text-5xl">Curriculum Vitae</h1>
-      <div className="cv-author mt-2 flex gap-5 align-baseline">
+      <div className="cv-author mb-4 mt-2 flex gap-5 align-baseline">
         {mode === "display" && (
           <Fragment>
             <h2 className="text-3xl">{person}</h2>
@@ -39,6 +40,7 @@ export default function Heading() {
           </Fragment>
         )}
       </div>
+      <ContactDetails></ContactDetails>
     </header>
   );
 }
