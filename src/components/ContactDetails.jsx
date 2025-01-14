@@ -27,7 +27,7 @@ const ContactDetails = () => {
 
   return (
     <>
-      <h3 className="pb-2 text-base font-medium">Contact details:</h3>
+      <h3 className="pb-2 text-lg font-medium">Contact details</h3>
       {status === "typing" && (
         <form
           onSubmit={handleSubmit}
@@ -102,7 +102,7 @@ const submitForm = () => {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve();
-    }, 100);
+    }, 0);
   });
 };
 

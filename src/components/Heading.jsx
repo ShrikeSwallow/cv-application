@@ -20,7 +20,7 @@ export default function Heading() {
   };
 
   return (
-    <header>
+    <header className="mb-4">
       <h1 className="text-4xl font-semibold">Curriculum Vitae</h1>
       <div className="cv-author mb-4 mt-2 flex gap-5 align-baseline font-medium">
         {mode === "display" && (
