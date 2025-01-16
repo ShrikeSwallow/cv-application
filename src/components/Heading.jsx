@@ -20,12 +20,12 @@ export default function Heading() {
   };
 
   return (
-    <header className="mb-4">
-      <h1 className="text-4xl font-semibold">Curriculum Vitae</h1>
-      <div className="cv-author mb-4 mt-2 flex gap-5 align-baseline font-medium">
+    <header className="mb-8">
+      <h1 className="mb-4 font-serif text-6xl font-black">Curriculum Vitae</h1>
+      <div className="cv-author mb-6 mt-2 flex items-stretch gap-5 font-medium">
         {mode === "display" && (
           <Fragment>
-            <h2 className="text-2xl">{person}</h2>
+            <h2 className="text-4xl font-bold">{person}</h2>
             <EditButton onClick={showInput}></EditButton>
           </Fragment>
         )}

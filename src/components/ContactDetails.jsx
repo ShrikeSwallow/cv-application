@@ -27,7 +27,7 @@ const ContactDetails = () => {
 
   return (
     <>
-      <h3 className="pb-2 text-lg font-medium">Contact details</h3>
+      <h3 className="pb-2 text-3xl font-semibold">Contact details</h3>
       {status === "typing" && (
         <form
           onSubmit={handleSubmit}
