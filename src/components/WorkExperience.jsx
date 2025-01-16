@@ -1,21 +1,46 @@
 import { useState } from "react";
 import ExperienceForm from "./ExperienceForm";
 
-const WorkExperience = () => {
-  const [previousJobs, setPreviousJobs] = useState([
-    {
-      id: 0,
-      company: "kint",
-      position: "manager",
-      timePeriod: "2017-2022",
-      responsibilities: "lol",
-    },
-  ]);
-  const [formVisible, setFormVisible] = useState(false);
-  const [status, setStatus] = useState("typing");
+let nextId = 1;
+const exampleJob = [
+  {
+    id: 0,
+    company: "kint",
+    position: "manager",
+    timePeriod: "2017-2022",
+    responsibilities: "lol",
+  },
+];
 
-  const handleAdd = () => {
-    setFormVisible(true);
+const WorkExperience = () => {
+  const [previousJobs, setPreviousJobs] = useState(exampleJob);
+  const [activeJob, setActiveJob] = useState(null);
+
+  const handleEditClick = (job) => {
+    setActiveJob(job);
+  };
+
+  const handleFormSubmit = (updatedJob) => {
+    if (updatedJob.id) {
+      setPreviousJobs(
+        previousJobs.map((job) =>
+          job.id === updatedJob.id ? updatedJob : job,
+        ),
+      );
+    } else {
+      setPreviousJobs([...previousJobs, { ...updatedJob, id: nextId++ }]);
+    }
+    setActiveJob(null);
+  };
+
+  const handleAddClick = () => {
+    setActiveJob({
+      id: null,
+      company: "",
+      position: "",
+      timePeriod: "",
+      responsibilities: "",
+    });
   };
 
   return (
@@ -27,7 +52,12 @@ const WorkExperience = () => {
             <h4 className="text-2xl font-medium">{job.company}</h4>
             <ul className="flex gap-2">
               <li>
-                <button className="bg-transparent p-0 text-2xl">🖉</button>
+                <button
+                  className="bg-transparent p-0 text-2xl"
+                  onClick={() => handleEditClick(job)}
+                >
+                  🖉
+                </button>
               </li>
               <li>
                 <button
@@ -48,26 +78,17 @@ const WorkExperience = () => {
           <p className="text-sm">{job.responsibilities}</p>
         </div>
       ))}
-      <button onClick={handleAdd} type="button">
+      <button onClick={handleAddClick} type="button">
         Add new
       </button>
-      {formVisible && (
-        <ExperienceForm /*onSubmit={handleSubmit}*/></ExperienceForm>
+      {activeJob && (
+        <ExperienceForm
+          job={activeJob}
+          onSubmit={handleFormSubmit}
+        ></ExperienceForm>
       )}
-      {/*<div className="former-job">
-        <h4>Employer&apos;s Name</h4> 
-        
-      </div>*/}
     </>
   );
-};
-
-const submitForm = () => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve();
-    }, 0);
-  });
 };
 
 export default WorkExperience;
