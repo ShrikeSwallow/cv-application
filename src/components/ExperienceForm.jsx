@@ -1,14 +1,20 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 
-const ExperienceForm = () => {
-  const [status, setStatus] = useState("typing");
+const ExperienceForm = ({ job, onSubmit }) => {
+  const [data, setData] = useState({ ...job });
 
-  const handleSubmit = async (event) => {
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setData((prevState) => ({
+      ...prevState,
+      [name.split("-").join("")]: value,
+    }));
+  };
+
+  const handleSubmit = (event) => {
     event.preventDefault();
-    setStatus("submitting");
-    await submitForm();
-    setPreviousJobs(previousJobs.push({}));
-    setStatus("success");
+    onSubmit(data);
   };
 
   return (
@@ -19,16 +25,22 @@ const ExperienceForm = () => {
         </label>
         <input
           className="mb-1 border-2 border-solid border-slate-200 text-sm"
-          id="employer"
+          id="company"
+          name="company"
+          value={data.company}
           type="text"
+          onChange={handleChange}
         />
         <label className="text-sm font-normal" htmlFor="job-title">
           Job title
         </label>
         <input
           className="mb-1 border-2 border-solid border-slate-200 text-sm"
-          id="job-title"
+          id="position"
+          name="position"
+          value={data.position}
           type="text"
+          onChange={handleChange}
         />
         <label className="text-sm font-normal" htmlFor="time-period">
           Time period
@@ -36,7 +48,10 @@ const ExperienceForm = () => {
         <input
           className="mb-1 border-2 border-solid border-slate-200 text-sm"
           id="time-period"
+          name="time-Period"
+          value={data.timePeriod}
           type="text"
+          onChange={handleChange}
         />
         <label
           className="col-span-2 text-sm font-normal"
@@ -46,9 +61,11 @@ const ExperienceForm = () => {
         </label>
         <textarea
           className="col-span-2 border-2 border-solid border-slate-200 text-sm"
-          name="responsibilities"
           id="responsibilities"
+          name="responsibilities"
+          value={data.responsibilities}
           rows={5}
+          onChange={handleChange}
         ></textarea>
         <div className="mt-2 flex justify-center gap-8">
           <button className="bg-slate-400 disabled:opacity-25" type="submit">
@@ -64,3 +81,8 @@ const ExperienceForm = () => {
 };
 
 export default ExperienceForm;
+
+ExperienceForm.propTypes = {
+  job: PropTypes.object,
+  onSubmit: PropTypes.func,
+};
