@@ -35,7 +35,7 @@ const WorkExperience = () => {
 
   const handleAddClick = () => {
     setActiveJob({
-      id: -1,
+      id: null,
       company: "",
       position: "",
       timePeriod: "",
@@ -46,42 +46,55 @@ const WorkExperience = () => {
   return (
     <>
       <h3 className="pb-2 text-3xl font-medium">Work experience</h3>
-      {previousJobs.map((job) => (
-        <div key={job.id} className="company mb-4 flex flex-col gap-1">
-          <div className="flex gap-4">
-            <h4 className="text-2xl font-medium">{job.company}</h4>
-            <ul className="flex gap-2">
-              <li>
-                <button
-                  className="bg-transparent p-0 text-2xl"
-                  onClick={() => handleEditClick(job)}
-                >
-                  🖉
-                </button>
-              </li>
-              <li>
-                <button
-                  className="bg-transparent p-0 text-2xl"
-                  onClick={() => {
-                    setPreviousJobs(
-                      previousJobs.filter((j) => j.id !== job.id),
-                    );
-                  }}
-                >
-                  🗑
-                </button>
-              </li>
-            </ul>
-          </div>
-          <h5 className="text-lg">{job.position}</h5>
-          <em>{job.timePeriod}</em>
-          <p className="text-sm">{job.responsibilities}</p>
-        </div>
-      ))}
+      {previousJobs.map((job) => {
+        {
+          if (activeJob?.id !== job.id)
+            return (
+              <div key={job.id} className="company mb-4 flex flex-col gap-1">
+                <div className="flex gap-4">
+                  <h4 className="text-2xl font-medium">{job.company}</h4>
+                  <ul className="flex gap-2">
+                    <li>
+                      <button
+                        className="bg-transparent p-0 text-2xl"
+                        onClick={() => handleEditClick(job)}
+                      >
+                        🖉
+                      </button>
+                    </li>
+                    <li>
+                      <button
+                        className="bg-transparent p-0 text-2xl"
+                        onClick={() => {
+                          setPreviousJobs(
+                            previousJobs.filter((j) => j.id !== job.id),
+                          );
+                        }}
+                      >
+                        🗑
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+                <h5 className="text-lg">{job.position}</h5>
+                <em>{job.timePeriod}</em>
+                <p className="text-sm">{job.responsibilities}</p>
+              </div>
+            );
+          else {
+            return (
+              <ExperienceForm
+                job={activeJob}
+                onSubmit={handleFormSubmit}
+              ></ExperienceForm>
+            );
+          }
+        }
+      })}
       <button onClick={handleAddClick} type="button">
         Add new
       </button>
-      {activeJob && (
+      {activeJob?.id === null && (
         <ExperienceForm
           job={activeJob}
           onSubmit={handleFormSubmit}
