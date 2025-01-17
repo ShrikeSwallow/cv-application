@@ -1,10 +1,10 @@
 import { useState } from "react";
 import ExperienceForm from "./ExperienceForm";
 
-let nextId = 1;
+let nextId = 2;
 const exampleJob = [
   {
-    id: 0,
+    id: 1,
     company: "kint",
     position: "manager",
     timePeriod: "2017-2022",
@@ -35,7 +35,7 @@ const WorkExperience = () => {
 
   const handleAddClick = () => {
     setActiveJob({
-      id: null,
+      id: -1,
       company: "",
       position: "",
       timePeriod: "",
